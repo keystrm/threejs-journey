@@ -30,3 +30,7 @@ scence.add(camera)
 const renderer = new THREE.WebGLRenderer({
   canvas:canvas
 })
+
+renderer.render(scence,camera)
+
+console.log(renderer)
