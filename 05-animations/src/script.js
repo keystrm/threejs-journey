@@ -41,13 +41,12 @@ const tick = () => {
     time = currentTime
 
     const elapsedTime = clock.getElapsedTime()
-    console.log(deltaTime)
 
     //transforms
-    mesh.position.x += 0.001 * deltaTime
+    mesh.position.x = Math.sin(elapsedTime) 
     mesh.rotation.y -= 0.003 * deltaTime
 
-    mesh.scale.z = elapsedTime
+    mesh.scale.z = Math.cos(elapsedTime)
 
 
     renderer.render(scene, camera)
