@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -11,6 +12,12 @@ const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
+
+// Object
+const geometry2 = new THREE.BoxGeometry(1, 1, 1)
+const material2 = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+const mesh2 = new THREE.Mesh(geometry2, material2)
+scene.add(mesh2)
 
 // Sizes
 const sizes = {
@@ -28,6 +35,11 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+
+/**
+ * Animate using libraries
+ */
+gsap.to(mesh2.position, { duration: 1, delay: 1, x: -2 })
 
 let time = Date.now()
 
