@@ -31,6 +31,8 @@ renderer.setSize(sizes.width, sizes.height)
 
 let time = Date.now()
 
+const clock = new THREE.Clock()
+
 //fps animation
 const tick = () => {
 
@@ -38,11 +40,14 @@ const tick = () => {
     const deltaTime = currentTime - time
     time = currentTime
 
+    const elapsedTime = clock.getElapsedTime()
     console.log(deltaTime)
 
     //transforms
     mesh.position.x += 0.001 * deltaTime
     mesh.rotation.y -= 0.003 * deltaTime
+
+    mesh.scale.z = elapsedTime
 
 
     renderer.render(scene, camera)
