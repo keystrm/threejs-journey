@@ -19,7 +19,7 @@ const cursor = {
 
 window.addEventListener('mousemove',(event) => {
     cursor.x = event.clientX/sizes.width - 0.5
-    cursor.y = event.clientY/sizes.height - 0.5
+    cursor.y = -(event.clientY/sizes.height - 0.5)
 })
 
 // Scene
@@ -37,8 +37,8 @@ scene.add(mesh)
 //Perspective camera
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.x = 2
-camera.position.y = 2
+camera.position.x = cursor.x * 5  
+camera.position.y = cursor.y * 5
 camera.position.z = 2
 camera.lookAt(mesh.position)
 scene.add(camera)
