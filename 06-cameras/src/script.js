@@ -47,7 +47,9 @@ scene.add(camera)
 //Controlls
 
 const controls = new OrbitControls(camera, canvas)
-
+// change target
+// controls.target.y = 1
+// controls.update()
 
 //Orthographic camera
 /**
