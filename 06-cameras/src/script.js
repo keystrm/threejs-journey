@@ -11,6 +11,16 @@ const sizes = {
     width: 800,
     height: 600
 }
+//cursor
+const cursor = {
+    x:0,
+    y:0
+}
+
+window.addEventListener('mousemove',(event) => {
+    cursor.x = event.clientX/sizes.width - 0.5
+    cursor.y = event.clientY/sizes.height - 0.5
+})
 
 // Scene
 const scene = new THREE.Scene()
@@ -26,15 +36,15 @@ scene.add(mesh)
 
 //Perspective camera
 
-// const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-// camera.position.x = 2
-// camera.position.y = 2
-// camera.position.z = 2
-// camera.lookAt(mesh.position)
-// scene.add(camera)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+camera.position.x = 2
+camera.position.y = 2
+camera.position.z = 2
+camera.lookAt(mesh.position)
+scene.add(camera)
 
 //Orthographic camera
-
+/**
 const aspectRatio = sizes.width/sizes.height
 const camera = new THREE.OrthographicCamera(
     -1 * aspectRatio,
@@ -51,6 +61,7 @@ camera.position.z = 2
 camera.lookAt(mesh.position)
 
 scene.add(camera)
+ */
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -67,6 +78,10 @@ const tick = () =>
 
     // Update objects
     mesh.rotation.y = elapsedTime;
+
+    //update camera
+    camera.position.x = cursor.x
+    camera.position.y = cursor.y
 
     // Render
     renderer.render(scene, camera)
