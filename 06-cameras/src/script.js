@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 /**
  * Base
@@ -43,6 +44,11 @@ camera.position.z = 2
 camera.lookAt(mesh.position)
 scene.add(camera)
 
+//Controlls
+
+const controls = new OrbitControls(camera, canvas)
+
+
 //Orthographic camera
 /**
 const aspectRatio = sizes.width/sizes.height
@@ -80,10 +86,10 @@ const tick = () =>
     mesh.rotation.y = elapsedTime;
 
     //update camera
-    camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 2
-    camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 2
-    camera.position.y = cursor.y * 3
-    camera.lookAt(mesh.position)
+    // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 2
+    // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 2
+    // camera.position.y = cursor.y * 3
+    // camera.lookAt(mesh.position)
 
     // Render
     renderer.render(scene, camera)
