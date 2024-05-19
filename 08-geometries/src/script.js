@@ -10,17 +10,19 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+
+
 //Buffer Geometry
-const positionArray = new Float32Array([
-    0,0,0,
-    0,1,0,
-    1,0,0
-])
+const count = 500
+
+const positionArray = new Float32Array(count*3*3)
+
+//fill array with random values
+for (let index = 0; index < count*3*3; index++) {
+    positionArray[index] = Math.random()-0.5   
+}
 
 const positionAttribute = new THREE.BufferAttribute(positionArray,3)
-
-// Object
-// const geometry = new THREE.BoxGeometry(1, 1, 1)
 
 const geometry = new THREE.BufferGeometry()
 geometry.setAttribute('position',positionAttribute)
