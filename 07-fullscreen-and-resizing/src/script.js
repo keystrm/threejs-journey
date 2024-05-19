@@ -63,6 +63,49 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
 
 /**
+ * Full Screen controls
+ */
+
+// Function to enter full-screen mode
+const enterFullscreen = () => {
+    const elem = document.documentElement; // or any specific element
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+};
+
+// Function to exit full-screen mode
+const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) { // Firefox
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE/Edge
+        document.msExitFullscreen();
+    }
+};
+
+// Function to toggle full-screen mode
+const toggleFullscreen = () => {
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+        exitFullscreen();
+    } else {
+        enterFullscreen();
+    }
+};
+
+document.addEventListener('dblclick', toggleFullscreen);
+
+
+/**
  * Animate
  */
 const clock = new THREE.Clock()
