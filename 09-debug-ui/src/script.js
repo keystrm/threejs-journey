@@ -49,6 +49,22 @@ debugObject.spin = () => {
 gui
     .add(debugObject,'spin')
 
+debugObject.subdivision = 2
+
+gui
+    .add(debugObject, 'subdivision')
+    .min(1)
+    .max(20)
+    .step(1)
+    .onFinishChange(()=>{
+        mesh.geometry.dispose()
+        mesh.geometry = new THREE.BoxGeometry(
+            1, 1, 1,
+            debugObject.subdivision, debugObject.subdivision, debugObject.subdivision
+        )
+
+    })
+
 /**
  * Sizes
  */
