@@ -8,7 +8,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 const loadingManager = new THREE.LoadingManager()
 
 const textureLoader = new THREE.TextureLoader(loadingManager)
-const colorTexture = textureLoader.load('/textures/door/color.jpg')
+const colorTexture = textureLoader.load('/textures/checkerboard-8x8.png')
 colorTexture.colorSpace = THREE.SRGBColorSpace
 const alphaTexture = textureLoader.load('/textures/door/alpha.jpg')
 const heightTexture = textureLoader.load('/textures/door/height.jpg')
@@ -28,7 +28,9 @@ const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 // colorTexture.center.x = 0.5
 // colorTexture.center.y = 0.5
 
-colorTexture.minFilter = THREE.NearestFilter
+// colorTexture.minFilter = THREE.NearestFilter
+colorTexture.magFilter = THREE.NearestFilter
+
 
 /**
  * Base
