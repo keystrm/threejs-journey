@@ -19,6 +19,7 @@ const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(0.5,16,16),
     material
 )
+sphere.position.x = -1.5
 
 const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(1,1),
@@ -29,6 +30,7 @@ const torus = new THREE.Mesh(
     new THREE.TorusGeometry(0.3,0.2,16,32),
     material
 )
+torus.position.x = 1.5
 
 scene.add(sphere,plane,torus)
 
@@ -86,6 +88,14 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    sphere.rotation.x = elapsedTime*0.1
+    torus.rotation.x = elapsedTime*0.1
+    plane.rotation.x = elapsedTime*0.1
+
+    sphere.rotation.y = elapsedTime*-0.15
+    torus.rotation.y = elapsedTime*-0.15
+    plane.rotation.y = elapsedTime*-0.15
 
     // Update controls
     controls.update()
