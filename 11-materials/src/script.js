@@ -54,8 +54,12 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 // const material = new THREE.MeshDepthMaterial()
 
 //Lamber
+// const material = new THREE.MeshLambertMaterial()
 
-const material = new THREE.MeshLambertMaterial()
+//Pong
+const material = new THREE.MeshPhongMaterial()
+material.shininess = 100
+material.specular = new THREE.Color(0x1188ff)
 
 
 const sphere = new THREE.Mesh(
@@ -86,6 +90,7 @@ scene.add(ambinetLight)
 const pointLight = new THREE.PointLight(0xffffff,30)
 pointLight.position.x = 2
 pointLight.position.y = 3
+pointLight.position.y = 4
 
 scene.add(pointLight)
 
