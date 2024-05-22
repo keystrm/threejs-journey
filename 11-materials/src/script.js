@@ -22,7 +22,7 @@ const doorHeightTexture = textureLoader.load('./textures/door/height.jpg')
 const doorNormalTexture = textureLoader.load('./textures/door/normal.jpg')
 const doorMetalnessTexture = textureLoader.load('./textures/door/metalness.jpg')
 const doorRoughnessTexture = textureLoader.load('./textures/door/roughness.jpg')
-const matcapTexture = textureLoader.load('./textures/matcaps/1.png')
+const matcapTexture = textureLoader.load('./textures/matcaps/8.png')
 const gradientTexture = textureLoader.load('./textures/gradients/3.jpg')
 
 doorColorTexture.colorSpace = THREE.SRGBColorSpace
@@ -31,7 +31,32 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 /**
  * Objects
  */
-const material = new THREE.MeshBasicMaterial({map:doorColorTexture})
+// const material = new THREE.MeshBasicMaterial()
+// material.map = doorColorTexture
+// material.color = new THREE.Color('green')
+// material.wireframe = true
+
+// material.transparent = true
+// material.opacity = 0.5
+
+// material.alphaMap = doorAlphaTexture
+// material.side = THREE.DoubleSide
+
+// Mesh Normal material
+// const material = new THREE.MeshNormalMaterial()
+// material.flatShading = true
+
+// Mesh matcap material
+// const material = new THREE.MeshMatcapMaterial()
+// material.matcap = matcapTexture
+
+//Mesh depth material
+// const material = new THREE.MeshDepthMaterial()
+
+//Lamber
+
+const material = new THREE.MeshLambertMaterial()
+
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(0.5,16,16),
@@ -51,6 +76,19 @@ const torus = new THREE.Mesh(
 torus.position.x = 1.5
 
 scene.add(sphere,plane,torus)
+
+/**
+ * Lights
+ */
+const ambinetLight = new THREE.AmbientLight(0xffffff,1)
+scene.add(ambinetLight)
+
+const pointLight = new THREE.PointLight(0xffffff,30)
+pointLight.position.x = 2
+pointLight.position.y = 3
+
+scene.add(pointLight)
+
 
 /**
  * Sizes
