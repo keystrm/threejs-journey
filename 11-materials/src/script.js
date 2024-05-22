@@ -23,7 +23,7 @@ const doorNormalTexture = textureLoader.load('./textures/door/normal.jpg')
 const doorMetalnessTexture = textureLoader.load('./textures/door/metalness.jpg')
 const doorRoughnessTexture = textureLoader.load('./textures/door/roughness.jpg')
 const matcapTexture = textureLoader.load('./textures/matcaps/8.png')
-const gradientTexture = textureLoader.load('./textures/gradients/3.jpg')
+const gradientTexture = textureLoader.load('./textures/gradients/5.jpg')
 
 doorColorTexture.colorSpace = THREE.SRGBColorSpace
 matcapTexture.colorSpace = THREE.SRGBColorSpace
@@ -63,6 +63,11 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 //toon
 const material = new THREE.MeshToonMaterial()
+gradientTexture.minFilter = THREE.NearestFilter
+gradientTexture.magFilter = THREE.NearestFilter
+gradientTexture.generateMipmaps = false
+material.gradientMap = gradientTexture
+
 
 
 
