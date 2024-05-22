@@ -57,9 +57,13 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 // const material = new THREE.MeshLambertMaterial()
 
 //Pong
-const material = new THREE.MeshPhongMaterial()
-material.shininess = 100
-material.specular = new THREE.Color(0x1188ff)
+// const material = new THREE.MeshPhongMaterial()
+// material.shininess = 100
+// material.specular = new THREE.Color(0x1188ff)
+
+//toon
+const material = new THREE.MeshToonMaterial()
+
 
 
 const sphere = new THREE.Mesh(
