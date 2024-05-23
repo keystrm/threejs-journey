@@ -47,9 +47,9 @@ fontLoader.load(
                 bevelSegments: 3
             }
         )
-        const textMaterial = new THREE.MeshBasicMaterial({wireframe:true})
-        const text = new THREE.Mesh(textGeometry,textMaterial)
-        scene.add(text)
+        // const textMaterial = new THREE.MeshBasicMaterial({wireframe:true})
+        // const text = new THREE.Mesh(textGeometry,textMaterial)
+        // scene.add(text)
 
         // textGeometry.computeBoundingBox()
         // textGeometry.translate(
@@ -59,6 +59,13 @@ fontLoader.load(
         // )
 
         textGeometry.center()
+
+        const matcapTexture = textureLoader.load('/textures/matcaps/8.png')
+        matcapTexture.colorSpace = THREE.SRGBColorSpace
+
+        const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
+        const text = new THREE.Mesh(textGeometry,textMaterial)
+        scene.add(text)
     }
 )
 
