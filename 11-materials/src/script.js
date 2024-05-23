@@ -78,13 +78,16 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 // Standard material
 const material = new THREE.MeshStandardMaterial()
-material.metalness = 0.7
-material.roughness = 0.2
+material.metalness = 1
+material.roughness = 1
 material.map = doorColorTexture
 material.aoMap = doorAmbientOcclusionTexture
 material.aoMapIntensity = 1
 material.displacementMap = doorHeightTexture
 material.displacementScale = 0.1
+
+material.metalnessMap = doorMetalnessTexture
+material.roughnessMap = doorRoughnessTexture
 
 gui.add(material,'metalness').min(0).max(1).step(0.0001)
 gui.add(material,'roughness').min(0).max(1).step(0.0001)
