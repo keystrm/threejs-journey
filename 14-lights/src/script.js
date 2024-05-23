@@ -32,6 +32,12 @@ const pointLight = new THREE.PointLight(0xff9000, 1.5)
 scene.add(pointLight)
 pointLight.position.set(1, - 0.5, 1, 5)
 
+// React area light
+const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 6, 1, 1)
+scene.add(rectAreaLight)
+rectAreaLight.position.set(- 1.5, 0, 1.5)
+rectAreaLight.lookAt(new THREE.Vector3())
+
 /**
  * Objects
  */
