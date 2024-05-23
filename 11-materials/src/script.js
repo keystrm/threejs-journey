@@ -80,6 +80,7 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 const material = new THREE.MeshStandardMaterial()
 material.metalness = 0.7
 material.roughness = 0.2
+material.map = doorColorTexture
 
 gui.add(material,'metalness').min(0).max(1).step(0.0001)
 gui.add(material,'roughness').min(0).max(1).step(0.0001)
@@ -107,15 +108,15 @@ scene.add(sphere,plane,torus)
 /**
  * Lights
  */
-const ambinetLight = new THREE.AmbientLight(0xffffff,1)
-scene.add(ambinetLight)
+// const ambinetLight = new THREE.AmbientLight(0xffffff,1)
+// scene.add(ambinetLight)
 
-const pointLight = new THREE.PointLight(0xffffff,30)
-pointLight.position.x = 2
-pointLight.position.y = 3
-pointLight.position.y = 4
+// const pointLight = new THREE.PointLight(0xffffff,30)
+// pointLight.position.x = 2
+// pointLight.position.y = 3
+// pointLight.position.y = 4
 
-scene.add(pointLight)
+// scene.add(pointLight)
 
 /**
  * Environment maps
@@ -126,6 +127,7 @@ rgbeLoader.load('./textures/environmentMap/2k.hdr',(environmentMap)=>{
     environmentMap.mapping = THREE.EquirectangularReflectionMapping
 
     scene.background = environmentMap
+    scene.environment = environmentMap
 })
 
 
