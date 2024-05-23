@@ -51,12 +51,14 @@ fontLoader.load(
         const text = new THREE.Mesh(textGeometry,textMaterial)
         scene.add(text)
 
-        textGeometry.computeBoundingBox()
-        textGeometry.translate(
-            - (textGeometry.boundingBox.max.x - 0.02) * 0.5, // Subtract bevel size
-            - (textGeometry.boundingBox.max.y - 0.02) * 0.5, // Subtract bevel size
-            - (textGeometry.boundingBox.max.z - 0.03) * 0.5  // Subtract bevel thickness
-        )
+        // textGeometry.computeBoundingBox()
+        // textGeometry.translate(
+        //     - (textGeometry.boundingBox.max.x - 0.02) * 0.5, // Subtract bevel size
+        //     - (textGeometry.boundingBox.max.y - 0.02) * 0.5, // Subtract bevel size
+        //     - (textGeometry.boundingBox.max.z - 0.03) * 0.5  // Subtract bevel thickness
+        // )
+
+        textGeometry.center()
     }
 )
 
