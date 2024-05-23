@@ -100,19 +100,19 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 // Physical material
 const material = new THREE.MeshPhysicalMaterial()
-material.metalness = 1
-material.roughness = 1
-material.map = doorColorTexture
-material.aoMap = doorAmbientOcclusionTexture
-material.aoMapIntensity = 1
-material.displacementMap = doorHeightTexture
-material.displacementScale = 0.1
+material.metalness = 0
+material.roughness = 0
+// material.map = doorColorTexture
+// material.aoMap = doorAmbientOcclusionTexture
+// material.aoMapIntensity = 1
+// material.displacementMap = doorHeightTexture
+// material.displacementScale = 0.1
 
-material.metalnessMap = doorMetalnessTexture
-material.roughnessMap = doorRoughnessTexture
+// material.metalnessMap = doorMetalnessTexture
+// material.roughnessMap = doorRoughnessTexture
 
-material.normalMap = doorNormalTexture
-material.normalScale.set(0.5, 0.5)
+// material.normalMap = doorNormalTexture
+// material.normalScale.set(0.5, 0.5)
 
 // Clearcoat
 // material.clearcoat = 1
