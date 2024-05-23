@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
+import {RGBELoader} from 'three/examples/jsm/loaders/RGBELoader.js'
 
 /**
  * Debug
@@ -115,6 +116,17 @@ pointLight.position.y = 3
 pointLight.position.y = 4
 
 scene.add(pointLight)
+
+/**
+ * Environment maps
+ */
+
+const rgbeLoader = new RGBELoader()
+rgbeLoader.load('./textures/environmentMap/2k.hdr',(environmentMap)=>{
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping
+
+    scene.background = environmentMap
+})
 
 
 /**
