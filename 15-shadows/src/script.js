@@ -45,11 +45,31 @@ gui.add(directionalLight.position, 'y').min(- 5).max(5).step(0.001)
 gui.add(directionalLight.position, 'z').min(- 5).max(5).step(0.001)
 scene.add(directionalLight)
 
+//Spot light
+
+const spotLight = new THREE.SpotLight(0xffffff,3.6,10,Math.PI*0.3)
+spotLight.position.set(0,2,2)
+spotLight.castShadow = true
+
+spotLight.shadow.mapSize.width = 1024
+spotLight.shadow.mapSize.height = 1024
+spotLight.shadow.camera.near = 1
+spotLight.shadow.camera.far = 5
+
+scene.add(spotLight)
+scene.add(spotLight.target)
+
 /**
  * Helpers
  */
 const directionalLightHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
 scene.add(directionalLightHelper)
+
+const spotLightHelper = new THREE.CameraHelper(spotLight.shadow.camera)
+scene.add(spotLightHelper)
+
+directionalLightHelper.visible = false
+spotLight.visible = false
 
 
 /**
