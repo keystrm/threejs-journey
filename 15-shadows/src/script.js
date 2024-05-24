@@ -25,6 +25,7 @@ scene.add(ambientLight)
 // Directional light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5)
 directionalLight.position.set(2, 2, - 1)
+directionalLight.castShadow = true
 gui.add(directionalLight, 'intensity').min(0).max(3).step(0.001)
 gui.add(directionalLight.position, 'x').min(- 5).max(5).step(0.001)
 gui.add(directionalLight.position, 'y').min(- 5).max(5).step(0.001)
@@ -47,12 +48,15 @@ const sphere = new THREE.Mesh(
     material
 )
 
+sphere.castShadow = true
+
 const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(5, 5),
     material
 )
 plane.rotation.x = - Math.PI * 0.5
 plane.position.y = - 0.5
+plane.receiveShadow = true
 
 scene.add(sphere, plane)
 
@@ -101,6 +105,8 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+renderer.shadowMap.enabled = true
 
 /**
  * Animate
