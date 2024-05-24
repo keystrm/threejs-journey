@@ -22,6 +22,10 @@ const houseMeasurements = {
     roof:{
         height:1.5,
         radius:3.5
+    },
+    door:{
+        height:1.8,
+        width:1.4
     }
 }
 
@@ -46,6 +50,7 @@ scene.add(floor)
 const house = new THREE.Group()
 scene.add(house)
 
+//walls
 const walls = new THREE.Mesh(
     new THREE.BoxGeometry(houseMeasurements.width,houseMeasurements.height,houseMeasurements.depth),
     new THREE.MeshStandardMaterial()
@@ -53,6 +58,7 @@ const walls = new THREE.Mesh(
 walls.position.y = houseMeasurements.height * 0.5
 house.add(walls)
 
+//roofs
 const roof = new THREE.Mesh(
     new THREE.ConeGeometry(houseMeasurements.roof.radius,houseMeasurements.roof.height,4),
     new THREE.MeshStandardMaterial()
@@ -60,6 +66,16 @@ const roof = new THREE.Mesh(
 roof.position.y = houseMeasurements.height+houseMeasurements.roof.height*0.5
 roof.rotation.y = Math.PI * 0.25    
 house.add(roof)
+
+//door
+const door = new THREE.Mesh(
+    new THREE.PlaneGeometry(houseMeasurements.door.width,houseMeasurements.door.height),
+    new THREE.MeshStandardMaterial({color:'red'})
+)
+door.position.y = houseMeasurements.door.height*0.5
+door.position.z = houseMeasurements.width*0.5 + 0.01
+
+house.add(door)
 
 /**
  * Lights
