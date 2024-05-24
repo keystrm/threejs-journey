@@ -18,13 +18,17 @@ const scene = new THREE.Scene()
 const houseMeasurements = {
     height:2.5,
     width:4,
-    depth:4
+    depth:4,
+    roof:{
+        height:1.5,
+        radius:3.5
+    }
 }
 
 /**
  * Axes helper
  */
-const axesHelper = new THREE.AxesHelper()
+const axesHelper = new THREE.AxesHelper(20)
 scene.add(axesHelper)
 
 const floor = new THREE.Mesh(
@@ -49,6 +53,13 @@ const walls = new THREE.Mesh(
 walls.position.y = houseMeasurements.height * 0.5
 house.add(walls)
 
+const roof = new THREE.Mesh(
+    new THREE.ConeGeometry(houseMeasurements.roof.radius,houseMeasurements.roof.height,4),
+    new THREE.MeshStandardMaterial()
+)
+roof.position.y = houseMeasurements.height+houseMeasurements.roof.height*0.5
+roof.rotation.y = Math.PI * 0.25    
+house.add(roof)
 
 /**
  * Lights
