@@ -36,6 +36,7 @@ directionalLight.shadow.camera.right = 2
 directionalLight.shadow.camera.bottom = -2
 directionalLight.shadow.camera.left = -2
 
+directionalLight.shadow.radius = 10
 
 
 gui.add(directionalLight, 'intensity').min(0).max(3).step(0.001)
