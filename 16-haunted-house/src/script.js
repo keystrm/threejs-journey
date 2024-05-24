@@ -15,22 +15,17 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+const houseMeasurements = {
+    height:2.5,
+    width:4,
+    depth:4
+}
+
 /**
  * Axes helper
  */
 const axesHelper = new THREE.AxesHelper()
 scene.add(axesHelper)
-
-
-/**
- * House
- */
-// Temporary sphere
-const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1, 32, 32),
-    new THREE.MeshStandardMaterial({ roughness: 0.7 })
-)
-scene.add(sphere)
 
 const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(20,20),
@@ -38,6 +33,22 @@ const floor = new THREE.Mesh(
 )
 floor.rotation.x = -Math.PI * 0.5
 scene.add(floor)
+
+/**
+ * House
+ */
+// Temporary sphere
+
+const house = new THREE.Group()
+scene.add(house)
+
+const walls = new THREE.Mesh(
+    new THREE.BoxGeometry(houseMeasurements.width,houseMeasurements.height,houseMeasurements.depth),
+    new THREE.MeshStandardMaterial()
+)
+walls.position.y = houseMeasurements.height * 0.5
+house.add(walls)
+
 
 /**
  * Lights
