@@ -109,11 +109,17 @@ const graveMaterial = new THREE.MeshStandardMaterial()
 for(let i=0;i<30;i++){
     const grave = new THREE.Mesh(graveGeometry,graveMaterial)
     const angle = Math.random()*Math.PI*2
-    const radius = 4
+    const radius = 3 + Math.random() * 4
     const x = Math.sin(angle) * radius
     const z = Math.cos(angle) * radius
+
     grave.position.x = x
     grave.position.z = z
+    grave.position.y = Math.random() * 0.4
+
+    grave.rotation.x = (Math.random() - 0.5) * 0.4
+    grave.rotation.y = (Math.random() - 0.5) * 0.4
+    grave.rotation.z = (Math.random() - 0.5) * 0.4
 
     graves.add(grave)
 }
