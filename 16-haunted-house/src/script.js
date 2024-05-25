@@ -99,6 +99,25 @@ bush4.position.set(- 1, 0.05, 2.6)
 
 house.add(bush1, bush2, bush3, bush4)
 
+//graves
+const graves = new THREE.Group()
+scene.add(graves)
+
+const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2)
+const graveMaterial = new THREE.MeshStandardMaterial()
+
+for(let i=0;i<30;i++){
+    const grave = new THREE.Mesh(graveGeometry,graveMaterial)
+    const angle = Math.random()*Math.PI*2
+    const radius = 4
+    const x = Math.sin(angle) * radius
+    const z = Math.cos(angle) * radius
+    grave.position.x = x
+    grave.position.z = z
+
+    graves.add(grave)
+}
+
 /**
  * Lights
  */
