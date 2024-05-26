@@ -156,9 +156,29 @@ roof.rotation.y = Math.PI * 0.25
 house.add(roof)
 
 //door
+// Door textures
+const doorColorTexture = textureLoader.load('./door/color.jpg')
+const doorAlphaTexture = textureLoader.load('./door/alpha.jpg')
+const doorAmbientOcclusionTexture = textureLoader.load('./door/ambientOcclusion.jpg')
+const doorHeightTexture = textureLoader.load('./door/height.jpg')
+const doorNormalTexture = textureLoader.load('./door/normal.jpg')
+const doorMetalnessTexture = textureLoader.load('./door/metalness.jpg')
+const doorRoughnessTexture = textureLoader.load('./door/roughness.jpg')
+
+doorColorTexture.colorSpace = THREE.SRGBColorSpace
+
 const door = new THREE.Mesh(
     new THREE.PlaneGeometry(houseMeasurements.door.width,houseMeasurements.door.height),
-    new THREE.MeshStandardMaterial({color:'red'})
+    new THREE.MeshStandardMaterial({
+        map: doorColorTexture,
+        transparent: true,
+        alphaMap: doorAlphaTexture,
+        aoMap: doorAmbientOcclusionTexture,
+        displacementMap: doorHeightTexture,
+        normalMap: doorNormalTexture,
+        metalnessMap: doorMetalnessTexture,
+        roughnessMap: doorRoughnessTexture
+    })
 )
 door.position.y = houseMeasurements.door.height*0.5
 door.position.z = houseMeasurements.width*0.5 + 0.01
