@@ -47,11 +47,27 @@ const floorARMTexture = textureLoader.load('./floor/brown_mud_leaves_01_1k/brown
 const floorNormalTexture = textureLoader.load('./floor/brown_mud_leaves_01_1k/brown_mud_leaves_01_nor_gl_1k.jpg')
 const floorDisplacementTexture = textureLoader.load('./floor/brown_mud_leaves_01_1k/brown_mud_leaves_01_disp_1k.jpg')
 
+floorColorTexture.repeat.set(8, 8)
+floorARMTexture.repeat.set(8, 8)
+floorNormalTexture.repeat.set(8, 8)
+floorDisplacementTexture.repeat.set(8, 8)
+
+floorColorTexture.wrapS = THREE.RepeatWrapping
+floorARMTexture.wrapS = THREE.RepeatWrapping
+floorNormalTexture.wrapS = THREE.RepeatWrapping
+floorDisplacementTexture.wrapS = THREE.RepeatWrapping
+
+floorColorTexture.wrapT = THREE.RepeatWrapping
+floorARMTexture.wrapT = THREE.RepeatWrapping
+floorNormalTexture.wrapT = THREE.RepeatWrapping
+floorDisplacementTexture.wrapT = THREE.RepeatWrapping
+
 const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(20,20),
     new THREE.MeshStandardMaterial({
         alphaMap:floorAlphaTexture,
-        transparent:true
+        transparent:true,
+        map:floorColorTexture
     })
 )
 floor.rotation.x = -Math.PI * 0.5
