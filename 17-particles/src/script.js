@@ -45,8 +45,9 @@ const particlesMaterial = new THREE.PointsMaterial({
 
 particlesMaterial.color =new THREE.Color('gold')
 particlesMaterial.alphaMap = particleTexture
-particlesMaterial.alphaTest = 0.01
-
+// particlesMaterial.alphaTest = 0.01
+// particlesMaterial.depthTest = false
+particlesMaterial.depthWrite = false
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particles)
