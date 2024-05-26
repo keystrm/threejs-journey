@@ -59,8 +59,9 @@ const generateGalaxy = () =>
         positions[i3 + 2] = (Math.random() - 0.5) * 3
 
         colors[i3    ] = 1
-        colors[i3 + 1] = 0
-        colors[i3 + 2] = 0
+        colors[i3 + 1] = 0  
+        colors[i3 + 2] = 0  
+
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
