@@ -139,7 +139,7 @@ const tick = () =>
     }
     
     // Animate camera
-    camera.position.y = scrollY
+    camera.position.y = - scrollY / sizes.height * objectsDistance
 
     // Render
     renderer.render(scene, camera)
