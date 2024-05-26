@@ -104,6 +104,16 @@ camera.position.z = 6
 scene.add(camera)
 
 /**
+ * Scroll
+ */
+let scrollY = window.scrollY
+
+window.addEventListener('scroll', () =>
+{
+    scrollY = window.scrollY
+})
+
+/**
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
@@ -127,6 +137,10 @@ const tick = () =>
         mesh.rotation.x = elapsedTime * 0.1
         mesh.rotation.y = elapsedTime * 0.12
     }
+    
+    // Animate camera
+    camera.position.y = scrollY
+
     // Render
     renderer.render(scene, camera)
 
