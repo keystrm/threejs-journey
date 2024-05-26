@@ -20,6 +20,8 @@ gui
 /**
  * Base
  */
+const objectsDistance = 4
+
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 
@@ -29,6 +31,7 @@ const scene = new THREE.Scene()
 // Texture
 const textureLoader = new THREE.TextureLoader()
 const gradientTexture = textureLoader.load('textures/gradients/3.jpg')
+gradientTexture.magFilter = THREE.NearestFilter
 
 /**
  * Objects
@@ -55,6 +58,10 @@ const mesh3 = new THREE.Mesh(
 )
 
 scene.add(mesh1, mesh2, mesh3)
+
+mesh1.position.y = - objectsDistance * 0
+mesh2.position.y = - objectsDistance * 1
+mesh3.position.y = - objectsDistance * 2
 
 /**
  * Lights
