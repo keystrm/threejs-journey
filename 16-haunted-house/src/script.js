@@ -40,6 +40,13 @@ scene.add(axesHelper)
  */
 const textureLoader = new THREE.TextureLoader()
 
+//Roof
+const roofColorTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slates_02_diff_1k.jpg')
+const roofARMTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slates_02_arm_1k.jpg')
+const roofNormalTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slates_02_nor_gl_1k.jpg')
+
+roofColorTexture.colorSpace = THREE.SRGBColorSpace
+
 // Wall
 const wallColorTexture = textureLoader.load('./wall/rock_wall_10_1k/rock_wall_10_diff_1k.jpg')
 const wallARMTexture = textureLoader.load('./wall/rock_wall_10_1k/rock_wall_10_arm_1k.jpg')
@@ -129,8 +136,22 @@ house.add(walls)
 //roofs
 const roof = new THREE.Mesh(
     new THREE.ConeGeometry(houseMeasurements.roof.radius,houseMeasurements.roof.height,4),
-    new THREE.MeshStandardMaterial()
+    new THREE.MeshStandardMaterial({
+        map: roofColorTexture,
+        aoMap: roofARMTexture,
+        roughnessMap: roofARMTexture,
+        metalnessMap: roofARMTexture,
+        normalMap: roofNormalTexture
+    })
 )
+roofColorTexture.repeat.set(3, 1)
+roofARMTexture.repeat.set(3, 1)
+roofNormalTexture.repeat.set(3, 1)
+
+roofColorTexture.wrapS = THREE.RepeatWrapping
+roofARMTexture.wrapS = THREE.RepeatWrapping
+roofNormalTexture.wrapS = THREE.RepeatWrapping
+
 roof.position.y = houseMeasurements.height+houseMeasurements.roof.height*0.5
 roof.rotation.y = Math.PI * 0.25    
 house.add(roof)
