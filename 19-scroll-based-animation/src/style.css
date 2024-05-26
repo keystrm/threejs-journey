@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+html{
+    background: #1e1e20;
+}
+
 .webgl
 {
     position: fixed;
