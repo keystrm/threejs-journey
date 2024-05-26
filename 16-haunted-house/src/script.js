@@ -188,7 +188,8 @@ const bushMaterial = new THREE.MeshStandardMaterial({
     aoMap: bushARMTexture,
     roughnessMap: bushARMTexture,
     metalnessMap: bushARMTexture,
-    normalMap: bushNormalTexture
+    normalMap: bushNormalTexture,
+    color: '#ccffcc',
 })
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial)
