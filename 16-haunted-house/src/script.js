@@ -47,6 +47,18 @@ const wallNormalTexture = textureLoader.load('./wall/rock_wall_10_1k/rock_wall_1
 
 wallColorTexture.colorSpace = THREE.SRGBColorSpace
 
+wallColorTexture.repeat.set(2, 2)
+wallARMTexture.repeat.set(2, 2)
+wallNormalTexture.repeat.set(2, 2)
+
+wallColorTexture.wrapS = THREE.RepeatWrapping
+wallARMTexture.wrapS = THREE.RepeatWrapping
+wallNormalTexture.wrapS = THREE.RepeatWrapping
+
+wallColorTexture.wrapT = THREE.RepeatWrapping
+wallARMTexture.wrapT = THREE.RepeatWrapping
+wallNormalTexture.wrapT = THREE.RepeatWrapping
+
 // Floor
 const floorAlphaTexture = textureLoader.load('./floor/alpha.jpg')
 const floorColorTexture = textureLoader.load('./floor/brown_mud_leaves_01_1k/brown_mud_leaves_01_diff_1k.jpg')
