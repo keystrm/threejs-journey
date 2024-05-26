@@ -23,6 +23,7 @@ parameters.size = 0.01
 parameters.radius = 5
 parameters.branches = 3
 parameters.spin = 1
+parameters.randomness = 0.2
 
 let geometry = null
 let material = null
@@ -76,12 +77,17 @@ const generateGalaxy = () =>
         const i3 = i * 3
 
         const radius = Math.random() * parameters.radius
+    
         const spinAngle = radius * parameters.spin
         const branchAngle = (i % parameters.branches) / parameters.branches * Math.PI * 2
-
-        positions[i3    ] = Math.cos(branchAngle + spinAngle) * radius
-        positions[i3 + 1] = 0
-        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius
+        
+        const randomX = (Math.random() - 0.5) * parameters.randomness * radius
+        const randomY = (Math.random() - 0.5) * parameters.randomness * radius
+        const randomZ = (Math.random() - 0.5) * parameters.randomness * radius
+    
+        positions[i3    ] = Math.cos(branchAngle + spinAngle) * radius + randomX
+        positions[i3 + 1] = randomY
+        positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ
     }
      scene.add(points)
 }
