@@ -62,12 +62,20 @@ floorARMTexture.wrapT = THREE.RepeatWrapping
 floorNormalTexture.wrapT = THREE.RepeatWrapping
 floorDisplacementTexture.wrapT = THREE.RepeatWrapping
 
+floorColorTexture.colorSpace = THREE.SRGBColorSpace
+
 const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(20,20),
+    new THREE.PlaneGeometry(20,20,100,100),
     new THREE.MeshStandardMaterial({
         alphaMap:floorAlphaTexture,
         transparent:true,
-        map:floorColorTexture
+        map:floorColorTexture,
+        aoMap: floorARMTexture,
+        roughnessMap: floorARMTexture,
+        metalnessMap: floorARMTexture,
+        normalMap: floorNormalTexture,
+        displacementMap: floorDisplacementTexture,
+        displacementScale: 0.3,
     })
 )
 floor.rotation.x = -Math.PI * 0.5
