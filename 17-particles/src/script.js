@@ -26,7 +26,7 @@ const particleTexture = textureLoader.load('/textures/particles/2.png')
 
 // Geometry
 const particlesGeometry = new THREE.BufferGeometry()
-const count = 500
+const count = 5000
 
 const positions = new Float32Array(count * 3) // Multiply by 3 because each position is composed of 3 values (x, y, z)
 
@@ -39,11 +39,13 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 
 
 const particlesMaterial = new THREE.PointsMaterial({
     size:0.2,
-    sizeAttenuation:true
+    sizeAttenuation:true,
+    transparent:true
 })
 
 particlesMaterial.color =new THREE.Color('gold')
-particlesMaterial.map = particleTexture
+particlesMaterial.alphaMap = particleTexture
+particlesMaterial.alphaTest = 0.01
 
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
