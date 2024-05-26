@@ -114,7 +114,6 @@ gui.add(floor.material, 'displacementBias').min(-1).max(1).step(0.001).name('flo
 /**
  * House
  */
-// Temporary sphere
 
 const house = new THREE.Group()
 scene.add(house)
@@ -167,8 +166,30 @@ door.position.z = houseMeasurements.width*0.5 + 0.01
 house.add(door)
 
 // Bushes
+
+// Bush
+const bushColorTexture = textureLoader.load('./bush/winter_leaves_1k/winter_leaves_diff_1k.jpg')
+const bushARMTexture = textureLoader.load('./bush/winter_leaves_1k/winter_leaves_arm_1k.jpg')
+const bushNormalTexture = textureLoader.load('./bush/winter_leaves_1k/winter_leaves_nor_gl_1k.jpg')
+
+bushColorTexture.colorSpace = THREE.SRGBColorSpace
+
+bushColorTexture.repeat.set(2, 1)
+bushARMTexture.repeat.set(2, 1)
+bushNormalTexture.repeat.set(2, 1)
+
+bushColorTexture.wrapS = THREE.RepeatWrapping
+bushARMTexture.wrapS = THREE.RepeatWrapping
+bushNormalTexture.wrapS = THREE.RepeatWrapping
+
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16)
-const bushMaterial = new THREE.MeshStandardMaterial()
+const bushMaterial = new THREE.MeshStandardMaterial({
+    map: bushColorTexture,
+    aoMap: bushARMTexture,
+    roughnessMap: bushARMTexture,
+    metalnessMap: bushARMTexture,
+    normalMap: bushNormalTexture
+})
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial)
 bush1.scale.set(0.5, 0.5, 0.5)
