@@ -59,6 +59,8 @@ const mesh3 = new THREE.Mesh(
 
 scene.add(mesh1, mesh2, mesh3)
 
+const sectionMeshes = [ mesh1, mesh2, mesh3 ]
+
 mesh1.position.y = - objectsDistance * 0
 mesh2.position.y = - objectsDistance * 1
 mesh3.position.y = - objectsDistance * 2
@@ -120,6 +122,11 @@ const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
 
+    for(const mesh of sectionMeshes)
+    {
+        mesh.rotation.x = elapsedTime * 0.1
+        mesh.rotation.y = elapsedTime * 0.12
+    }
     // Render
     renderer.render(scene, camera)
 
