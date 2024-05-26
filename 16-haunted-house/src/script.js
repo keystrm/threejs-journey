@@ -40,6 +40,13 @@ scene.add(axesHelper)
  */
 const textureLoader = new THREE.TextureLoader()
 
+// Wall
+const wallColorTexture = textureLoader.load('./wall/rock_wall_10_1k/rock_wall_10_diff_1k.jpg')
+const wallARMTexture = textureLoader.load('./wall/rock_wall_10_1k/rock_wall_10_arm_1k.jpg')
+const wallNormalTexture = textureLoader.load('./wall/rock_wall_10_1k/rock_wall_10_nor_gl_1k.jpg')
+
+wallColorTexture.colorSpace = THREE.SRGBColorSpace
+
 // Floor
 const floorAlphaTexture = textureLoader.load('./floor/alpha.jpg')
 const floorColorTexture = textureLoader.load('./floor/brown_mud_leaves_01_1k/brown_mud_leaves_01_diff_1k.jpg')
@@ -96,7 +103,13 @@ scene.add(house)
 //walls
 const walls = new THREE.Mesh(
     new THREE.BoxGeometry(houseMeasurements.width,houseMeasurements.height,houseMeasurements.depth),
-    new THREE.MeshStandardMaterial()
+    new THREE.MeshStandardMaterial({
+        map: wallColorTexture,
+        aoMap: wallARMTexture,
+        roughnessMap: wallARMTexture,
+        metalnessMap: wallARMTexture,
+        normalMap: wallNormalTexture
+    })
 )
 walls.position.y = houseMeasurements.height * 0.5
 house.add(walls)
