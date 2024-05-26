@@ -168,7 +168,7 @@ const doorRoughnessTexture = textureLoader.load('./door/roughness.jpg')
 doorColorTexture.colorSpace = THREE.SRGBColorSpace
 
 const door = new THREE.Mesh(
-    new THREE.PlaneGeometry(houseMeasurements.door.width,houseMeasurements.door.height),
+    new THREE.PlaneGeometry(houseMeasurements.door.width,houseMeasurements.door.height,100,100),
     new THREE.MeshStandardMaterial({
         map: doorColorTexture,
         transparent: true,
@@ -177,7 +177,9 @@ const door = new THREE.Mesh(
         displacementMap: doorHeightTexture,
         normalMap: doorNormalTexture,
         metalnessMap: doorMetalnessTexture,
-        roughnessMap: doorRoughnessTexture
+        roughnessMap: doorRoughnessTexture,
+        displacementScale: 0.15,
+        displacementBias: -0.04,
     })
 )
 door.position.y = houseMeasurements.door.height*0.5
