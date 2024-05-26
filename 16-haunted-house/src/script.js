@@ -167,7 +167,7 @@ house.add(door)
 
 // Bushes
 
-// Bush
+// Bush textures
 const bushColorTexture = textureLoader.load('./bush/winter_leaves_1k/winter_leaves_diff_1k.jpg')
 const bushARMTexture = textureLoader.load('./bush/winter_leaves_1k/winter_leaves_arm_1k.jpg')
 const bushNormalTexture = textureLoader.load('./bush/winter_leaves_1k/winter_leaves_nor_gl_1k.jpg')
@@ -181,6 +181,8 @@ bushNormalTexture.repeat.set(2, 1)
 bushColorTexture.wrapS = THREE.RepeatWrapping
 bushARMTexture.wrapS = THREE.RepeatWrapping
 bushNormalTexture.wrapS = THREE.RepeatWrapping
+
+//bushes
 
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16)
 const bushMaterial = new THREE.MeshStandardMaterial({
@@ -218,8 +220,21 @@ house.add(bush1, bush2, bush3, bush4)
 const graves = new THREE.Group()
 scene.add(graves)
 
+// Grave textures
+const graveColorTexture = textureLoader.load('./grave/sand_03_1k/sand_03_diff_1k.jpg')
+const graveARMTexture = textureLoader.load('./grave/sand_03_1k/sand_03_arm_1k.jpg')
+const graveNormalTexture = textureLoader.load('./grave/sand_03_1k/sand_03_nor_gl_1k.jpg')
+
+graveColorTexture.colorSpace = THREE.SRGBColorSpace
+
 const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2)
-const graveMaterial = new THREE.MeshStandardMaterial()
+const graveMaterial = new THREE.MeshStandardMaterial({
+    map: graveColorTexture,
+    aoMap: graveARMTexture,
+    roughnessMap: graveARMTexture,
+    metalnessMap: graveARMTexture,
+    normalMap: graveNormalTexture
+})
 
 for(let i=0;i<30;i++){
     const grave = new THREE.Mesh(graveGeometry,graveMaterial)
