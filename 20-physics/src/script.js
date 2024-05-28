@@ -1,11 +1,17 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
+import CANNON from 'cannon'
 
 /**
  * Debug
  */
 const gui = new GUI()
+
+/**
+ * Physics
+ */
+const world = new CANNON.World()
 
 /**
  * Base
