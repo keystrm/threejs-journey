@@ -38,9 +38,25 @@ debugObject.createBox = () =>
 gui.add(debugObject, 'createBox')
 
 /**
+ * Sounds
+ */
+const hitSound = new Audio('/sounds/hit.mp3')
+
+const playHitSound = (collision) =>
+{
+    const impactStrength = collision.contact.getImpactVelocityAlongNormal()
+
+    if(impactStrength > 1.5)
+    {
+        hitSound.volume = Math.random()
+        hitSound.currentTime = 0
+        hitSound.play()
+    }
+}
+
+/**
  * Physics
  */
-
 
 const world = new CANNON.World()
 world.gravity.set(0, - 9.82, 0)
@@ -170,6 +186,7 @@ const createBox = (width, height, depth, position) =>
 
     // Save in objects
     objectsToUpdate.push({ mesh, body })
+    body.addEventListener('collide', playHitSound)
 }
 
 createBox(1, 1.5, 2, { x: 0, y: 3, z: 0 })
