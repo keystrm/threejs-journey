@@ -44,6 +44,8 @@ gui.add(debugObject, 'createBox')
 
 const world = new CANNON.World()
 world.gravity.set(0, - 9.82, 0)
+world.broadphase = new CANNON.SAPBroadphase(world)
+world.allowSleep = true
 
 //materials
 const defaultMaterial = new CANNON.Material('default')
