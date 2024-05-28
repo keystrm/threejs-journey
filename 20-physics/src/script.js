@@ -69,6 +69,8 @@ const environmentMapTexture = cubeTextureLoader.load([
 /**
  * Utils
  */
+const objectsToUpdate = []
+
 const createSphere = (radius, position) =>
 {
     // Three.js mesh
@@ -96,6 +98,11 @@ const createSphere = (radius, position) =>
     })
     body.position.copy(position)
     world.addBody(body)
+
+    objectsToUpdate.push({
+        mesh: mesh,
+        body: body
+    })
 }
 
 createSphere(0.5, { x: 0, y: 3, z: 0 })
@@ -191,6 +198,13 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - oldElapsedTime
     oldElapsedTime = elapsedTime
+
+    world.step(1 / 60, deltaTime, 3)
+    
+    for(const object of objectsToUpdate)
+    {
+        object.mesh.position.copy(object.body.position)
+    }
 
     // Update controls
     controls.update()
