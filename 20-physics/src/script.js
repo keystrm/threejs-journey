@@ -23,6 +23,14 @@ const sphereBody = new CANNON.Body({
 
 world.addBody(sphereBody)
 
+//floor
+const floorShape = new CANNON.Plane()
+const floorBody = new CANNON.Body()
+floorBody.mass = 0
+floorBody.addShape(floorShape)
+world.addBody(floorBody)
+
+floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(- 1, 0, 0), Math.PI * 0.5)
 /**
  * Base
  */
@@ -159,7 +167,7 @@ const tick = () =>
     world.step(1 / 60, deltaTime, 3)
 
     sphere.position.copy(sphereBody.position)
-    
+
     // Update controls
     controls.update()
 
