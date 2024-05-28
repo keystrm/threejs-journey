@@ -52,6 +52,10 @@ floorBody.addShape(floorShape)
 world.addBody(floorBody)
 
 floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(- 1, 0, 0), Math.PI * 0.5)
+
+//apply forces
+sphereBody.applyLocalForce(new CANNON.Vec3(150, 0, 0), new CANNON.Vec3(0, 0, 0))
+
 /**
  * Base
  */
