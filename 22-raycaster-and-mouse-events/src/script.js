@@ -109,6 +109,26 @@ const clock = new THREE.Clock()
 
 let currentIntersect = null
 
+window.addEventListener('click', () =>
+{
+    if(currentIntersect)
+    {
+        switch(currentIntersect.object)
+        {
+            case object1:
+                console.log('click on object 1')
+                break
+
+            case object2:
+                console.log('click on object 2')
+                break
+
+            case object3:
+                console.log('click on object 3')
+                break
+        }
+    }
+})
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
