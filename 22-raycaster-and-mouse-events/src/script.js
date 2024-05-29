@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 /**
  * Base
@@ -13,6 +14,34 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+/**
+ * Lights
+ */
+// Ambient light
+const ambientLight = new THREE.AmbientLight('#ffffff', 0.9)
+scene.add(ambientLight)
+
+// Directional light
+const directionalLight = new THREE.DirectionalLight('#ffffff', 2.1)
+directionalLight.position.set(1, 2, 3)
+scene.add(directionalLight)
+
+/**
+ * Model
+ */
+const gltfLoader = new GLTFLoader()
+
+let model = null
+gltfLoader.load(
+    './models/Duck/glTF-Binary/Duck.glb',
+    (gltf) =>
+    {
+        model = gltf.scene
+        model.position.y = - 1.2
+        scene.add(model)
+    }
+)
 
 /**
  * Mouse
@@ -158,28 +187,40 @@ const tick = () =>
     //     intersect.object.material.color.set('#0000ff')
     // }
 
-    raycaster.setFromCamera(mouse, camera)
-    
-    const objectsToTest = [object1, object2, object3]
-    const intersects = raycaster.intersectObjects(objectsToTest)
-    
-    if(intersects.length)
-    {
-        if(!currentIntersect)
-        {
-            console.log('mouse enter')
-        }
+    //mouse events
 
-        currentIntersect = intersects[0]
-    }
-    else
-    {
-        if(currentIntersect)
-        {
-            console.log('mouse leave')
-        }
+    // raycaster.setFromCamera(mouse, camera)
+    
+    // const objectsToTest = [object1, object2, object3]
+    // const intersects = raycaster.intersectObjects(objectsToTest)
+    
+    // if(intersects.length)
+    // {
+    //     if(!currentIntersect)
+    //     {
+    //         console.log('mouse enter')
+    //     }
+
+    //     currentIntersect = intersects[0]
+    // }
+    // else
+    // {
+    //     if(currentIntersect)
+    //     {
+    //         console.log('mouse leave')
+    //     }
         
-        currentIntersect = null
+    //     currentIntersect = null
+    // }
+    
+    //get model positions intersections
+
+     raycaster.setFromCamera(mouse, camera)
+
+    if(model)
+    {
+        const modelIntersects = raycaster.intersectObject(model)
+        console.log(modelIntersects)
     }
 
     // Update controls
