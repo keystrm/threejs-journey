@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 /**
  * Base
@@ -45,6 +46,24 @@ directionalLight.shadow.camera.right = 7
 directionalLight.shadow.camera.bottom = - 7
 directionalLight.position.set(5, 5, 5)
 scene.add(directionalLight)
+
+/**
+ * Models
+ */
+const gltfLoader = new GLTFLoader()
+
+gltfLoader.load(
+    '/models/Duck/glTF/Duck.gltf',
+    (gltf) =>
+    {
+        scene.add(gltf.scene.children[0])
+    }
+)
+
+
+
+
+
 
 /**
  * Sizes
