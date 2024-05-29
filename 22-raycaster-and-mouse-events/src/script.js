@@ -23,8 +23,6 @@ window.addEventListener('mousemove', (event) =>
 {
     mouse.x = event.clientX / sizes.width * 2 - 1
     mouse.y = - (event.clientY / sizes.height) * 2 + 1
-
-    console.log(mouse)
 })
 
 /**
@@ -109,6 +107,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  */
 const clock = new THREE.Clock()
 
+let currentIntersect = null
+
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
@@ -143,19 +143,25 @@ const tick = () =>
     const objectsToTest = [object1, object2, object3]
     const intersects = raycaster.intersectObjects(objectsToTest)
     
-    for(const intersect of intersects)
+    if(intersects.length)
     {
-        intersect.object.material.color.set('#0000ff')
+        if(!currentIntersect)
+        {
+            console.log('mouse enter')
+        }
+
+        currentIntersect = intersects[0]
+    }
+    else
+    {
+        if(currentIntersect)
+        {
+            console.log('mouse leave')
+        }
+        
+        currentIntersect = null
     }
 
-    for(const object of objectsToTest)
-    {
-        if(!intersects.find(intersect => intersect.object === object))
-        {
-            object.material.color.set('#ff0000')
-        }
-    }
-    
     // Update controls
     controls.update()
 
