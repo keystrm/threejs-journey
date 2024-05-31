@@ -42,6 +42,10 @@ scene.environmentIntensity = 1
 scene.backgroundBlurriness = 0
 scene.backgroundIntensity = 1
 
+//rotation
+// scene.backgroundRotation.x = 1
+// scene.environmentRotation.x = 2
+
 /**
  * Models
  */
