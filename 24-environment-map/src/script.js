@@ -37,6 +37,11 @@ const environmentMap = cubeTextureLoader.load([
 scene.environment = environmentMap
 scene.background = environmentMap
 
+//intensity
+scene.environmentIntensity = 1
+scene.backgroundBlurriness = 0
+scene.backgroundIntensity = 1
+
 /**
  * Models
  */
