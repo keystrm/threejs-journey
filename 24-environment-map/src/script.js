@@ -2,12 +2,14 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import GUI from 'lil-gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 
 /**
  * Loaders
  */
 const gltfLoader = new GLTFLoader()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
+const rgbeLoader = new RGBELoader()
 
 /**
  * Base
@@ -24,18 +26,18 @@ const scene = new THREE.Scene()
 /**
  * Environment map
  */
-// LDR cube texture
-const environmentMap = cubeTextureLoader.load([
-    '/environmentMaps/0/px.png',
-    '/environmentMaps/0/nx.png',
-    '/environmentMaps/0/py.png',
-    '/environmentMaps/0/ny.png',
-    '/environmentMaps/0/pz.png',
-    '/environmentMaps/0/nz.png'
-])
+// // LDR cube texture
+// const environmentMap = cubeTextureLoader.load([
+//     '/environmentMaps/0/px.png',
+//     '/environmentMaps/0/nx.png',
+//     '/environmentMaps/0/py.png',
+//     '/environmentMaps/0/ny.png',
+//     '/environmentMaps/0/pz.png',
+//     '/environmentMaps/0/nz.png'
+// ])
 
-scene.environment = environmentMap
-scene.background = environmentMap
+// scene.environment = environmentMap
+// scene.background = environmentMap
 
 //intensity
 scene.environmentIntensity = 1
@@ -45,6 +47,15 @@ scene.backgroundIntensity = 1
 //rotation
 // scene.backgroundRotation.x = 1
 // scene.environmentRotation.x = 2
+
+// HDR (RGBE) equirectangular
+rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
+{
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping
+
+    scene.background = environmentMap
+    scene.environment = environmentMap
+})
 
 /**
  * Models
