@@ -11,6 +11,7 @@ const gltfLoader = new GLTFLoader()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 const rgbeLoader = new RGBELoader()
 const exrLoader = new EXRLoader()
+const textureLoader = new THREE.TextureLoader()
 
 /**
  * Base
@@ -59,13 +60,22 @@ scene.backgroundIntensity = 1
 // })
 
 // HDR (EXR) equirectangular
-exrLoader.load('/environmentMaps/nvidiaCanvas-4k.exr', (environmentMap) =>
-{
-    environmentMap.mapping = THREE.EquirectangularReflectionMapping
+// exrLoader.load('/environmentMaps/nvidiaCanvas-4k.exr', (environmentMap) =>
+// {
+//     environmentMap.mapping = THREE.EquirectangularReflectionMapping
 
-    scene.background = environmentMap
-    scene.environment = environmentMap
-})
+//     scene.background = environmentMap
+//     scene.environment = environmentMap
+// })
+
+// LDR equirectangular
+const environmentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/scifi_white_sky_scrapers_in_clouds_at_day_time.jpg')
+environmentMap.mapping = THREE.EquirectangularReflectionMapping
+environmentMap.colorSpace = THREE.SRGBColorSpace
+
+scene.background = environmentMap
+scene.environment = environmentMap
+scene.environmentIntensity = 4
 
 /**
  * Models
