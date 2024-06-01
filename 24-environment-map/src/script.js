@@ -4,6 +4,7 @@ import GUI from 'lil-gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 import { EXRLoader } from 'three/addons/loaders/EXRLoader.js'
+import { GroundedSkybox } from 'three/addons/objects/GroundedSkybox.js'
 /**
  * Loaders
  */
@@ -51,13 +52,20 @@ scene.backgroundIntensity = 1
 // scene.environmentRotation.x = 2
 
 // HDR (RGBE) equirectangular
-// rgbeLoader.load('/environmentMaps/blender-light-2k.hdr', (environmentMap) =>
-// {
-//     environmentMap.mapping = THREE.EquirectangularReflectionMapping
+rgbeLoader.load('/environmentMaps/2/2k.hdr', (environmentMap) =>
+{
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping
 
-//     scene.background = environmentMap
-//     scene.environment = environmentMap
-// })
+    scene.background = environmentMap
+    scene.environment = environmentMap
+    scene.environmentIntensity = 1
+
+    // Skybox
+    const skybox = new GroundedSkybox(environmentMap, 15, 70)
+    // skybox.material.wireframe = true
+    skybox.position.y = 15
+    scene.add(skybox)  
+})
 
 // HDR (EXR) equirectangular
 // exrLoader.load('/environmentMaps/nvidiaCanvas-4k.exr', (environmentMap) =>
@@ -69,13 +77,13 @@ scene.backgroundIntensity = 1
 // })
 
 // LDR equirectangular
-const environmentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/scifi_white_sky_scrapers_in_clouds_at_day_time.jpg')
-environmentMap.mapping = THREE.EquirectangularReflectionMapping
-environmentMap.colorSpace = THREE.SRGBColorSpace
+// const environmentMap = textureLoader.load('/environmentMaps/blockadesLabsSkybox/scifi_white_sky_scrapers_in_clouds_at_day_time.jpg')
+// environmentMap.mapping = THREE.EquirectangularReflectionMapping
+// environmentMap.colorSpace = THREE.SRGBColorSpace
 
-scene.background = environmentMap
-scene.environment = environmentMap
-scene.environmentIntensity = 4
+// scene.background = environmentMap
+// scene.environment = environmentMap
+// scene.environmentIntensity = 4
 
 /**
  * Models
