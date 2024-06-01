@@ -100,6 +100,7 @@ gltfLoader.load(
     }
 )
 
+floorColorTexture.colorSpace = THREE.SRGBColorSpace
 const floor = new THREE.Mesh(
     new THREE.PlaneGeometry(8, 8),
     new THREE.MeshStandardMaterial({
@@ -113,6 +114,7 @@ const floor = new THREE.Mesh(
 scene.add(floor)
 floor.rotation.x = - Math.PI * 0.5
 
+wallColorTexture.colorSpace = THREE.SRGBColorSpace
 const wall = new THREE.Mesh(
     new THREE.PlaneGeometry(8, 8),
     new THREE.MeshStandardMaterial({
