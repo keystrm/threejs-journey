@@ -1,5 +1,6 @@
 import Size from "./Utills/Size"
 import Time from './Utills/Time.js'
+import * as THREE from 'three'
 export default class Experience{
     constructor(canvas,sizes){
         // Global access
@@ -15,6 +16,7 @@ export default class Experience{
             console.log('A resize occurred')
         })
 
+        //time
         this.time = new Time()
 
         // Time tick event
@@ -22,6 +24,9 @@ export default class Experience{
         {
             this.update()
         })
+
+        //scene
+        this.scene = new THREE.Scene()
     }
 
     resize(){
@@ -29,6 +34,6 @@ export default class Experience{
     }
 
     update(){
-        
+
     }
 }
