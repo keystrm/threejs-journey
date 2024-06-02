@@ -16,5 +16,19 @@ export default class Experience{
         })
 
         this.time = new Time()
+
+        // Time tick event
+        this.time.on('tick', () =>
+        {
+            this.update()
+        })
+    }
+
+    resize(){
+
+    }
+
+    update(){
+        
     }
 }
