@@ -4,6 +4,8 @@ import Camera from "./Camera.js"
 import Renderer from "./Renderer.js"
 import * as THREE from 'three'
 import World from "./World/World.js"
+import Resource from "./Utills/Resource.js"
+import sources from './sources.js'
 
 let instance = null
 export default class Experience{
@@ -24,6 +26,8 @@ export default class Experience{
         this.time = new Time()
         //scene
         this.scene = new THREE.Scene()
+        //resources
+        this.resources = new Resource(sources)
         //camera
         this.camera = new Camera()
         //renderer

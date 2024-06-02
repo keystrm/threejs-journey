@@ -18,5 +18,6 @@ export default class World
 
         // Setup
         this.environment = new Environment()
+
     }
 }
