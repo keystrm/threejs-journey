@@ -28,7 +28,7 @@ export default class Experience{
         // Resize event
         this.size.on('resize', () =>
         {
-            console.log('A resize occurred')
+            this.resize()
         })
 
         // Time tick event
@@ -40,7 +40,7 @@ export default class Experience{
     }
 
     resize(){
-
+        this.camera.resize()
     }
 
     update(){

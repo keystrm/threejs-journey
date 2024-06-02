@@ -1,5 +1,6 @@
 import Experience from './Experience.js'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 export default class Camera
 {
     constructor(){
@@ -18,5 +19,9 @@ export default class Camera
     setControls(){
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
+    }
+    resize(){
+        this.instance.aspect = this.sizes.width / this.sizes.height
+        this.instance.updateProjectionMatrix()
     }
 }
