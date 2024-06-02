@@ -31,7 +31,7 @@ export default class Resource extends EventEmitter{
                     source.path,
                     (file) =>
                     {
-                        console.log(source, file)
+                        this.sourceLoaded(source, file)
                     }
                 )
             }
@@ -41,7 +41,7 @@ export default class Resource extends EventEmitter{
                     source.path,
                     (file) =>
                     {
-                        console.log(source, file)
+                        this.sourceLoaded(source, file)
                     }
                 )
             }
@@ -51,10 +51,22 @@ export default class Resource extends EventEmitter{
                     source.path,
                     (file) =>
                     {
-                        console.log(source, file)
+                        this.sourceLoaded(source, file)
                     }
                 )
             }
+        }
+    }
+
+    sourceLoaded(source, file){
+        
+        this.items[source.name] = file
+
+        this.loaded++
+
+        if(this.loaded === this.toLoad)
+        {
+            this.trigger('ready')
         }
     }
 }
