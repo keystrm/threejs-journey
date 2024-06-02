@@ -3,6 +3,7 @@ import Time from './Utills/Time.js'
 import Camera from "./Camera.js"
 import Renderer from "./Renderer.js"
 import * as THREE from 'three'
+import World from "./World/World.js"
 
 let instance = null
 export default class Experience{
@@ -27,6 +28,8 @@ export default class Experience{
         this.camera = new Camera()
         //renderer
         this.renderer = new Renderer()
+        //world
+        this.world = new World()
 
         // Resize event
         this.size.on('resize', () =>
