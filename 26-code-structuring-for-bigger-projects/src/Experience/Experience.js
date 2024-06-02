@@ -2,10 +2,18 @@ import Size from "./Utills/Size"
 import Time from './Utills/Time.js'
 import Camera from "./Camera.js"
 import * as THREE from 'three'
+
+let instance = null
 export default class Experience{
     constructor(canvas,sizes){
-        // Global access
-        window.experience = this //temp
+
+        // Singleton
+        if(instance)
+        {
+            return instance
+        }
+        instance = this
+
         this.canvas = canvas
 
         //size
