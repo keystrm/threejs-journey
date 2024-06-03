@@ -20,9 +20,9 @@ export default class Experience{
         instance = this
 
         this.canvas = canvas
-
         //debug
         this.debug = new Debug()
+        console.log(this.debug)
         //size
         this.size = new Size(sizes.width,sizes.height,sizes.ratio)
         //time
