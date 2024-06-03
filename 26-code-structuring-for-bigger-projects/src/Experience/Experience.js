@@ -21,6 +21,8 @@ export default class Experience{
 
         this.canvas = canvas
 
+        //debug
+        this.debug = new Debug()
         //size
         this.size = new Size(sizes.width,sizes.height,sizes.ratio)
         //time
@@ -35,8 +37,6 @@ export default class Experience{
         this.renderer = new Renderer()
         //world
         this.world = new World()
-        //debug
-        this.debug = new Debug()
 
         // Resize event
         this.size.on('resize', () =>
