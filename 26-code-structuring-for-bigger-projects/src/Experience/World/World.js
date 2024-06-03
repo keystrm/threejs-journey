@@ -1,7 +1,7 @@
 import Experience from '../Experience.js'
-import * as THREE from 'three'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
+import Fox from './Fox.js'
 
 export default class World
 {
@@ -17,6 +17,7 @@ export default class World
         {
             // Setup
             this.floor = new Floor()
+            this.fox = new Fox()
             this.environment = new Environment()
         })
 
