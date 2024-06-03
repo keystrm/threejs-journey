@@ -48,6 +48,8 @@ export default class Experience{
         {
             this.update()
         })
+        // Global access
+        window.experience = this
 
     }
 
