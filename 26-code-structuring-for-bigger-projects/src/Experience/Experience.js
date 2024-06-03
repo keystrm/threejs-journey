@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import World from "./World/World.js"
 import Resource from "./Utills/Resource.js"
 import sources from './sources.js'
+import Debug from "./Utills/Debug.js"
 
 let instance = null
 export default class Experience{
@@ -34,6 +35,8 @@ export default class Experience{
         this.renderer = new Renderer()
         //world
         this.world = new World()
+        //debug
+        this.debug = new Debug()
 
         // Resize event
         this.size.on('resize', () =>
