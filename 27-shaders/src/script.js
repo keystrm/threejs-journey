@@ -39,6 +39,9 @@ geometry.setAttribute('aRandom',new THREE.BufferAttribute(randoms,1))
 const material = new THREE.RawShaderMaterial({
     vertexShader: textVertexShader,
     fragmentShader: textFragmentShader,
+    uniforms:{
+        uFrequency: {value: new THREE.Vector2(10, 5)},
+    }
 })
 
 // Mesh
