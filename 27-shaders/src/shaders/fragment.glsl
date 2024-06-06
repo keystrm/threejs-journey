@@ -1,5 +1,3 @@
-precision mediump float;
-
 varying float vRandom;
 
 uniform vec3 uColor;
