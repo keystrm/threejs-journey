@@ -15,8 +15,8 @@ vec2 rotate(vec2 uv, float rotation, vec2 mid)
 void main()
 {
     vec2 wavedUv = vec2(
-        vUv.x + sin(vUv.y * 30.0) * 0.1,
-        vUv.y + sin(vUv.x * 30.0) * 0.1
+        vUv.x + sin(vUv.y * 100.0) * 0.1,
+        vUv.y + sin(vUv.x * 100.0) * 0.1
     );
     float strength = 1.0 - step(0.01, abs(distance(wavedUv, vec2(0.5)) - 0.25));
 
