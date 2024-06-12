@@ -18,14 +18,14 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Colors
-debugObject.depthColor = '#0000ff'
-debugObject.surfaceColor = '#8888ff'
+debugObject.depthColor = '#186691'
+debugObject.surfaceColor = '#9bd8ff'
 
 /**
  * Water
  */
 // Geometry
-const waterGeometry = new THREE.PlaneGeometry(2, 2, 128, 128)
+const waterGeometry = new THREE.PlaneGeometry(2, 2, 512, 512)
 
 // Material
 const waterMaterial = new THREE.ShaderMaterial({
@@ -39,8 +39,8 @@ const waterMaterial = new THREE.ShaderMaterial({
         uBigWavesSpeed: { value: 0.75 },
         uDepthColor: { value: new THREE.Color(debugObject.depthColor) },
         uSurfaceColor: { value: new THREE.Color(debugObject.surfaceColor) },
-        uColorOffset: { value: 0.25 },
-        uColorMultiplier: { value: 2 },
+        uColorOffset: { value: 0.18 },
+        uColorMultiplier: { value: 2.23 },
     }
 })
 
