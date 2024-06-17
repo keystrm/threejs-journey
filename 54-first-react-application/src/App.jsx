@@ -1,7 +1,11 @@
 import { Clicker } from "./Clicker";
+import { useState } from 'react'
 
 export default function App() {
-    return (
-        <Clicker />
-    )
+    const [hasClicker, setHasClicker] = useState(false)
+    return <>
+            <button onClick={() => setHasClicker(!hasClicker)}>Clicker</button>
+            { hasClicker ? <Clicker /> : null}
+        </>
+
 }
