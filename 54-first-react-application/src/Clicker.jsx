@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react'
 export function Clicker() {
     const [ count, setCount ] = useState(parseInt(localStorage.getItem('count') ?? 0))
+    useEffect(() =>
+    {
+        return () =>
+        {
+            localStorage.removeItem('count')
+        }
+    }, [])
 
     return (
         <div>
