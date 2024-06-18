@@ -9,6 +9,11 @@ export function Clicker() {
         }
     }, [])
 
+    useEffect(() =>
+    {
+        localStorage.setItem('count', count)
+    }, [ count ])
+
     return (
         <div>
             <div>Clicks count: {count}</div>
