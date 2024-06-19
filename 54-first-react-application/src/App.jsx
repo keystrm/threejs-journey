@@ -6,9 +6,9 @@ export default function App() {
     return <>
             <button onClick={() => setHasClicker(!hasClicker)}>Clicker</button>
             { hasClicker && <>
-             <Clicker color="red" />
-             <Clicker color="chocolate"/>
-             <Clicker color="green"/> 
+             <Clicker keyName="countA" color="red" />
+             <Clicker keyName="countB" color="chocolate"/>
+             <Clicker keyName="countC" color="green"/> 
              </>
             }
         </>

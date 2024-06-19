@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
-export function Clicker({color}) {
-    const [ count, setCount ] = useState(parseInt(localStorage.getItem('count') ?? 0))
+export function Clicker({keyName,color}) {
+    const [ count, setCount ] = useState(parseInt(localStorage.getItem(keyName) ?? 0))
     useEffect(() =>
     {
         return () =>
         {
-            localStorage.removeItem('count')
+            localStorage.removeItem(keyName)
         }
     }, [])
 
     useEffect(() =>
     {
-        localStorage.setItem('count', count)
+        localStorage.setItem(keyName, count)
     }, [ count ])
 
     return (
