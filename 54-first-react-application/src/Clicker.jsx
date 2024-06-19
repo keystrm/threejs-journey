@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-export function Clicker({keyName,color}) {
+export function Clicker({keyName,color,increment}) {
     const [ count, setCount ] = useState(parseInt(localStorage.getItem(keyName) ?? 0))
     useEffect(() =>
     {
@@ -14,10 +14,15 @@ export function Clicker({keyName,color}) {
         localStorage.setItem(keyName, count)
     }, [ count ])
 
+    const buttonClick = () => {
+        setCount(count + 1)
+        increment()
+    }
+
     return (
         <div>
             <div style={{color:color}}>Clicks count: {count}</div>
-            <button onClick={() => setCount(count + 1)}>Click me</button>
+            <button onClick={buttonClick}>Click me</button>
         </div>
     )
 }
