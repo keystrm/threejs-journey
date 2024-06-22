@@ -6,7 +6,7 @@ const root = createRoot(document.querySelector('#root'))
 
 root.render(
     <>
-        <App>
+        <App clickersCount={6}>
             <h1>My First React App</h1>
             <h2>And a fancy subtitle</h2>
         </App>
