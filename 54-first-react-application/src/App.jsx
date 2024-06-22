@@ -1,4 +1,5 @@
-import { Clicker } from "./Clicker";
+import { Clicker } from "./Clicker"
+import { People } from './People'
 import { useState,useMemo } from 'react'
 
 export default function App({clickersCount,children}) {
@@ -31,6 +32,7 @@ export default function App({clickersCount,children}) {
                 ) }
         </> }
             <div>Total count : {count}</div>
+            <People/>
         </>
 
 }
