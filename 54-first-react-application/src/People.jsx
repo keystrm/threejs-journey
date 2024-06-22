@@ -1,6 +1,8 @@
+import {useState} from 'react'
+
 export function People()
 {
-    const peoples = [
+    const [people,setPeople] = useState([
         {id: 1, name: 'John' },
         {id: 2, name: 'Cena' },
         {id: 3, name: 'Randy' },
@@ -8,12 +10,12 @@ export function People()
         {id: 5, name: 'Jiri' },
         {id: 6, name: 'Jonas' },
         {id: 7, name: 'Jamal' }
-    ]
+    ])
 
     return <>
         <h2>People</h2>
         <ul>
-            {peoples.map((people)=> <li key={people.id}>{people.name}</li>)}
+            {people.map((person)=> <li key={person.id}>{person.name}</li>)}
         </ul>
     </>
 }
