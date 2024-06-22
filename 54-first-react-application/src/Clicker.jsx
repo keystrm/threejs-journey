@@ -1,6 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 export function Clicker({keyName,color,increment}) {
     const [ count, setCount ] = useState(parseInt(localStorage.getItem(keyName) ?? 0))
+    const buttonRef = useRef()
+
+    useEffect(()=>{
+        buttonRef.current.style.backgroundColor = 'papayawhip'
+        buttonRef.current.style.color = 'salmon'
+    })
+
     useEffect(() =>
     {
         return () =>
@@ -22,7 +29,7 @@ export function Clicker({keyName,color,increment}) {
     return (
         <div>
             <div style={{color:color}}>Clicks count: {count}</div>
-            <button onClick={buttonClick}>Click me</button>
+            <button ref={buttonRef} onClick={buttonClick}>Click me</button>
         </div>
     )
 }
