@@ -1,3 +1,4 @@
+import * as THREE from 'three'
 export default function CustomObject()
 {
     const verticesCount = 10 * 3
@@ -15,6 +16,6 @@ export default function CustomObject()
                     array={ positions }
                 />
             </bufferGeometry>
-            <meshBasicMaterial color="red" />
+            <meshBasicMaterial color="red" side={ THREE.DoubleSide } />
         </mesh>
 }
