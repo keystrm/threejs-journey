@@ -3,6 +3,7 @@ import { useRef } from 'react'
 export default function Experience()
 {
     const cube = useRef()
+    const sphere = useRef()
     return <>
         <OrbitControls makeDefault />
         <directionalLight position={ [ 1, 2, 3 ] } intensity={ 4.5 } />
@@ -16,7 +17,7 @@ export default function Experience()
             scale={ 100 }
             fixed={ true }
         >
-            <mesh position-x={ - 2 }>
+            <mesh ref={ sphere } position-x={ - 2 }>
                 <sphereGeometry />
                 <meshStandardMaterial color="orange" />
                 <Html
@@ -24,6 +25,7 @@ export default function Experience()
                     wrapperClass="label"
                     center
                     distanceFactor={ 8 }
+                    occlude={ [ sphere, cube ] }
                 >
                     That's a sphere 👍
                 </Html>
