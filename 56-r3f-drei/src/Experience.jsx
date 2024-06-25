@@ -19,6 +19,7 @@ export default function Experience()
             <mesh position-x={ - 2 }>
                 <sphereGeometry />
                 <meshStandardMaterial color="orange" />
+                <Html position={ [ 1, 1, 0 ] }>That's a sphere 👍</Html>
             </mesh>
         </PivotControls>
 
@@ -33,6 +34,6 @@ export default function Experience()
             <planeGeometry />
             <meshStandardMaterial color="greenyellow" />
         </mesh>
-
+        <Html>Test</Html>
     </>
 }
